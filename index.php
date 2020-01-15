@@ -1,56 +1,38 @@
-<!DOCTYPE html>
 <?php
     include "show-data.php";
-?>    
+    include "update-data.php";
+?>
+<!DOCTYPE html>    
 <html>
-<head>
-    <title>Profile Page</title>
-
-    <!-- Untuk responsive -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-    <!-- MENGHUBUNGKAN STYLE CSS -->    
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-    
-    
+    <head>
+        <title>Profile Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />   
 </head>
 <body>
+    <nav>
+        <div class="menu-mobile">                
+            <a href="#" onclick="showMenu()">Menu</a>
+        </div>
+        <ul id="menu">
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">PRODUCT</a></li>
+            <li><a href="#">GALLERY</a></li>
+            <li><a href="#">NEWS</a></li>
+            <li><a href="#">MY INVENTORY</a></li>
+        </ul>
+    </nav>
 
-        <!-- MENAMPILKAN TOMBOL MENU -->
-        <nav>
-            <!-- Menu saat responsive -->
-            <div class="menu-mobile">                
-                <a href="#" onclick="showMenu()">Menu</a>
-            </div>
-            <ul id="menu">
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">PRODUCT</a></li>
-                <li><a href="#">GALLERY</a></li>
-                <li><a href="#">NEWS</a></li>
-                <li><a href="#">MY INVENTORY</a></li>
-            </ul>
-        </nav>
-        <!-- END - MENAMPILKAN TOMBOL MENU -->
-
-        <!-- MENAMPILKAN KOTAK PROFILE -->
         <section id="box-profile">
-
-            <!-- MENAMPILKAN GAMBAR PROFILE -->
             <div class="img-profile">
                 <div class="photo" style="background-image: url(assets/img/profile.jpg);"></div>
             </div>
-            <!-- END- MENAMPILKAN GAMBAR PROFILE -->
-
-            <!-- MENAMPILKAN NAMA, PEKERJAAN, DESCRIPTION -->
             <div class="description">
                 <h1 id="pName"><?php echo $nama; ?></h1>
                 <p id="pRole"><?php echo $role; ?></p>
                 <a href="#input-form" class="button bg-green" onclick="editForm()">Edit</a>
                 <a href="#" class="button border-blue">Resume</a>
             </div>
-            <!-- END - MENAMPILKAN NAMA, PEKERJAAN, DESCRIPTION -->
-
-            <!-- MENAMPILKAN DATA DATA PROFILE -->
             <div class="information">
                 <div class="data">
                     <p class="field">Availability</p>
@@ -73,15 +55,14 @@
                     <p id="pEmail" class="text-gray"><?php echo $email; ?></p>
                 </div>
             </div>
-            <!-- END - MENAMPILKAN DATA DATA PROFILE -->
-
         </section>
-        <!-- END -MENAMPILKAN KOTAK PROFILE -->
-
-
-        <!-- SECTION INPUT FORM -->
+        
         <section id="input-form">
-            <form method="#" action="#">
+            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <div class="form">
+                    <label>Id User</label>
+                    <input id="inpIdUser" type="text" name="id_user" value="<?php echo $id; ?>">
+                </div>    
                 <div class="form">
                     <label>Nama</label>
                     <input id="inpName" type="text" name="name">
@@ -111,7 +92,7 @@
                     <input id="inpEmail" type="email" name="email">
                 </div>
                 <div class="form">
-                    <input onclick="simpanForm()" type="submit" name="submit" value="SUBMIT" class="bg-blue">
+                    <input onclick="" type="submit" name="submit" value="SUBMIT" class="bg-blue">
                 </div>
             </form>
         </section>
